@@ -16,8 +16,14 @@ height: 1000px;
   
   <body style="margin : 0px; overflow: hidden;">
     
-    <model-viewer
-
+    <model-viewer 
+	camera-controls touch-action="pan-y" 
+	autoplay ar ar-modes="webxr scene-viewer" 
+	scale="0.2 0.2 0.2" shadow-intensity="1" 
+	src="animation2.glb" 
+	alt="An animated 3D model of a robot">
+	</model-viewer>
+      
 <button 
     slot="ar-button" 
     style="background-image: url('button.png');
@@ -30,63 +36,7 @@ height: 1000px;
    margin: 50px auto 100px;
    display: block;">
   </button>
-  
-     src="animation2.glb"
-     <model-viewer
-	 src="animation2.glb"
-	 
-	 
-	 autoplay ar ar-modes="webxr scene-viewer"
-	 shadow-intensity="1"
-	 camera-controls
-	 touch-action="pan-y"
-	 alt="An animated 3D model of a robot">
-      
-	  <button 
-    slot="ar-button" 
-    style="background-image: url('button.png');
-        background-size: cover;
-        width: 150px;
-        height: 150px;
-    margin-right: 10px;
-    border: none;
-     border-radius: 100px;
-   margin: 50px auto 100px;
-   display: block;">
-  </button>
-    </model-viewer>
-  
-
-
-
     
-<script>
-  document.querySelector("#model-viewer").addEventListener('ar-status', (event) => {
-    if(event.detail.status === 'failed'){
-      const error = document.querySelector("#error");
-      error.classList.remove('hide');
-      error.addEventListener('transitionend',(event) => {
-        error.classList.add('hide');
-      });
-    }
-  });
-</script>
-<style>
-  #error {
-    background-color: #ffffffdd;
-    border-radius: 16px;
-    padding: 16px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    transition: opacity 0.3s;
-  }
-  #error.hide {
-    opacity: 0;
-    visibility: hidden;
-    transition: visibility 2s, opacity 1s 1s;
-  }
-</style>
+
 </body>
 </html>
