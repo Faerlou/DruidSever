@@ -34,7 +34,7 @@ height: 1000px;
      src="animation2.glb"
      <model-viewer
 	 src="animation2.glb"
-	 poster="logoml.jpg"
+	 
 	 
 	 autoplay ar ar-modes="webxr scene-viewer"
 	 shadow-intensity="1"
@@ -42,6 +42,18 @@ height: 1000px;
 	 touch-action="pan-y"
 	 alt="An animated 3D model of a robot">
       
+	  <button 
+    slot="ar-button" 
+    style="background-image: url('button.png');
+        background-size: cover;
+        width: 150px;
+        height: 150px;
+    margin-right: 10px;
+    border: none;
+     border-radius: 100px;
+   margin: 50px auto 100px;
+   display: block;">
+  </button>
     </model-viewer>
   
 
