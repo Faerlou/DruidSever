@@ -5,7 +5,91 @@
     <script type="module" src="https://unpkg.com/@google/model-viewer@3.4.0/dist/model-viewer.min.js"></script>
   </head>
   
+  <style>
+    model-viewer {
+margin: 150px auto 75px;
+display: block;
+width: 1000px;
+height: 1000px;
+    }
+  </style>
+  
   <body style="margin : 0px; overflow: hidden;">
-    <model-viewer camera-controls touch-action="pan-y" autoplay ar ar-modes="webxr scene-viewer" scale="0.2 0.2 0.2" shadow-intensity="1" src="animation2.glb" alt="An animated 3D model of a robot"></model-viewer>
+    
+    <model-viewer 
+     src="animation2.glb"
+     <model-viewer src="animation2.glb" poster="logoml.jpg" ar ar-placement="wall" camera-controls touch-action="pan-y" alt="A 3D model of some wall art">
+      <button 
+    slot="ar-button" 
+    style="background-image: url('button.png');
+        background-size: cover;
+        width: 150px;
+        height: 150px;
+    margin-right: 10px;
+    border: none;
+     border-radius: 100px;
+   margin: 50px auto 100px;
+   display: block;">
+  </button>
+    </model-viewer>
+  
+
+<model-viewer
+camera-controls touch-action="pan-y"
+autoplay ar ar-modes="webxr scene-viewer"
+scale="0.2 0.2 0.2" shadow-intensity="1"
+src="animation2.glb"
+alt="An animated 3D model of a robot">
+ 
+  
+ <!-- skybox-image="../../shared-assets/environments/spruit_sunrise_1k_HDR.jpg"
+ skybox-height="2m" max-camera-orbit="auto 90deg auto"> -->
+  
+  
+  <div id="error" class="hide">AR is not supported on this device</div>
+  <button 
+    slot="ar-button" 
+    style="background-image: url('button2.png');
+        background-size: cover;
+        width: 150px;
+        height: 150px;
+    margin-right: 10px;
+    border: none;
+     border-radius: 100px;
+   margin: 50px auto 100px;
+   display: block;">
+  </button>
+    </model-viewer>
+</model-viewer>
+
+    
+<script>
+  document.querySelector("#model-viewer").addEventListener('ar-status', (event) => {
+    if(event.detail.status === 'failed'){
+      const error = document.querySelector("#error");
+      error.classList.remove('hide');
+      error.addEventListener('transitionend',(event) => {
+        error.classList.add('hide');
+      });
+    }
+  });
+</script>
+<style>
+  #error {
+    background-color: #ffffffdd;
+    border-radius: 16px;
+    padding: 16px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    transition: opacity 0.3s;
+  }
+  #error.hide {
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 2s, opacity 1s 1s;
+  }
+</style>
 </body>
 </html>
