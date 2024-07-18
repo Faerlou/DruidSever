@@ -18,8 +18,17 @@ height: 1000px;
     
     <model-viewer 
      src="animation2.glb"
-     <model-viewer src="camera-controls touch-action="pan-y" autoplay ar ar-modes="webxr scene-viewer" scale="0.2 0.2 0.2" shadow-intensity="1" src="animation2.glb" alt="An animated 3D model of a robot">
-      <button 
+     <model-viewer
+	 src="animation2.glb"
+	 poster="logoml.jpg"
+	 ar ar-placement="wall" 
+	 autoplay ar ar-modes="webxr scene-viewer"
+	 shadow-intensity="1"
+	 camera-controls
+	 touch-action="pan-y"
+	 alt="An animated 3D model of a robot">
+      
+	  <button 
     slot="ar-button" 
     style="background-image: url('button.png');
         background-size: cover;
