@@ -12,18 +12,44 @@
         width: 1000px;
         height: 1000px;
     }
+
+    .ar-button {
+        background-color: white;
+        border-radius: 4px;
+        border: none;
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .play-animation-button {
+        background-color: white;
+        border-radius: 4px;
+        border: none;
+        position: absolute;
+        bottom: 16px;
+        left: 16px;
+        padding: 10px;
+        cursor: pointer;
+    }
 </style>
 
 <body style="margin: 0px; overflow: hidden;">
 
     <model-viewer id="modelViewer" ar camera-controls touch-action="pan-y" src="ANIM2.glb" alt="A 3D model of an astronaut" autoplay>
-        <button slot="ar-button" style="background-color: white; border-radius: 4px; border: none; position: absolute; top: 16px; right: 16px;">
+        <button slot="ar-button" class="ar-button">
             👋 Activate AR
+        </button>
+        <button class="play-animation-button" id="playAnimationButton">
+            ▶️ Play Animation
         </button>
     </model-viewer>
 
     <script>
         const modelViewer = document.getElementById('modelViewer');
+        const playAnimationButton = document.getElementById('playAnimationButton');
 
         // Запускаем анимацию при загрузке модели
         modelViewer.addEventListener('load', () => {
@@ -37,7 +63,12 @@
 
         // Запускаем анимацию при входе в AR
         modelViewer.addEventListener('enter-ar', () => {
-            modelViewer.play(); // Запускаем анимацию при входе в AR
+            // Не запускаем анимацию автоматически, а ждем нажатия кнопки
+        });
+
+        // Обработчик события для кнопки запуска анимации
+        playAnimationButton.addEventListener('click', () => {
+            modelViewer.play(); // Запускаем анимацию при нажатии кнопки
         });
     </script>
 
