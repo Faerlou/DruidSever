@@ -1,3 +1,5 @@
+html
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +18,7 @@
 
 <body style="margin: 0px; overflow: hidden;">
 
-    <model-viewer id="modelViewer" ar camera-controls touch-action="pan-y" autoplay src="ANIM2.glb" alt="A 3D model of an astronaut">
+    <model-viewer id="modelViewer" ar camera-controls touch-action="pan-y" src="ANIM2.glb" alt="A 3D model of an astronaut" autoplay>
         <button slot="ar-button" style="background-color: white; border-radius: 4px; border: none; position: absolute; top: 16px; right: 16px;">
             👋 Activate AR
         </button>
@@ -25,11 +27,9 @@
     <script>
         const modelViewer = document.getElementById('modelViewer');
 
-        modelViewer.addEventListener('ar-status', (event) => {
-            if (event.detail.status === 'session-started') {
-                // Запускаем анимацию при начале сессии AR
-                modelViewer.play();
-            }
+        // Запускаем анимацию при загрузке модели
+        modelViewer.addEventListener('load', () => {
+            modelViewer.play();
         });
 
         // Зацикливаем анимацию
